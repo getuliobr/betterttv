@@ -141,11 +141,13 @@ class EmoteMenuViewStore extends SafeEventEmitter {
     const currentChannel = getCurrentChannel();
     const betterttvChannelEmotes = emotes.getEmotesByCategories([EmoteCategories.BETTERTTV_CHANNEL]);
     const frankerfacezChannelEmotes = emotes.getEmotesByCategories([EmoteCategories.FRANKERFACEZ_CHANNEL]);
+    const sevenTVChannelEmotes = emotes.getEmotesByCategories([EmoteCategories.SEVENTV_CHANNEL]);
+    console.log('herehereherehereherehereherehere', sevenTVChannelEmotes);
     let currentChannelProfilePicture = currentChannel?.avatar;
     if (
       getPlatform() === PlatformTypes.TWITCH &&
       currentChannel != null &&
-      (betterttvChannelEmotes.length > 0 || frankerfacezChannelEmotes.length > 0)
+      (betterttvChannelEmotes.length > 0 || frankerfacezChannelEmotes.length > 0 || sevenTVChannelEmotes.length > 0)
     ) {
       currentChannelProfilePicture = await twitch.getUserProfilePicture(currentChannel.id);
     }
@@ -192,6 +194,21 @@ class EmoteMenuViewStore extends SafeEventEmitter {
         formatMessage({defaultMessage: 'FrankerFaceZ Global'}),
         Icons.IMAGE(cdn.url('/assets/logos/ffz_logo.png'), 'FrankerFaceZ'),
         emotes.getEmotesByCategories([EmoteCategories.FRANKERFACEZ_GLOBAL])
+      ),
+      createCategory(
+        EmoteCategories.SEVENTV_CHANNEL,
+        EmoteProviders.SEVENTV,
+        formatMessage({defaultMessage: '7TV Channel'}),
+        Icons.IMAGE(cdn.url('/assets/logos/7tv_logo.webp'), '7TV'),
+        emotes.getEmotesByCategories([EmoteCategories.SEVENTV_CHANNEL]),
+        sevenTVChannelEmotes
+      ),
+      createCategory(
+        EmoteCategories.SEVENTV_GLOBAL,
+        EmoteProviders.SEVENTV,
+        formatMessage({defaultMessage: '7TV Global'}),
+        Icons.IMAGE(cdn.url('/assets/logos/7tv_logo.webp'), '7TV'),
+        emotes.getEmotesByCategories([EmoteCategories.SEVENTV_GLOBAL])
       ),
     ];
 

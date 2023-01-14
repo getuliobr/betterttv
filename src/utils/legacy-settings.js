@@ -142,11 +142,20 @@ function deserializeSettingForLegacy(data, settingId) {
       const bttvEmotes = data[LegacySettingIds.BTTV_EMOTES];
       const bttvGifEmotes = data[LegacySettingIds.BTTV_GIF_EMOTES];
       const ffzEmotes = data[LegacySettingIds.FFZ_EMOTES];
+      const stvEmotes = data[LegacySettingIds.STV_EMOTES];
 
       let flags = setFlag(0, EmoteTypeFlags.BTTV_EMOTES, bttvEmotes != null ? bttvEmotes : true);
       flags = setFlag(flags, EmoteTypeFlags.BTTV_GIF_EMOTES, bttvGifEmotes != null ? bttvGifEmotes : true);
       flags = setFlag(flags, EmoteTypeFlags.FFZ_EMOTES, ffzEmotes != null ? ffzEmotes : true);
-      return [flags, EmoteTypeFlags.BTTV_EMOTES | EmoteTypeFlags.BTTV_GIF_EMOTES | EmoteTypeFlags.FFZ_EMOTES];
+      flags = setFlag(flags, EmoteTypeFlags.STV_EMOTES, stvEmotes != null ? stvEmotes : true);
+
+      return [
+        flags,
+        EmoteTypeFlags.BTTV_EMOTES |
+          EmoteTypeFlags.BTTV_GIF_EMOTES |
+          EmoteTypeFlags.FFZ_EMOTES |
+          EmoteTypeFlags.STV_EMOTES,
+      ];
     }
     case SettingIds.CHAT: {
       const hideChatReplies = data[LegacySettingIds.HIDE_CHAT_REPLIES] || false;

@@ -69,6 +69,7 @@ export const EmoteTypeFlags = {
   BTTV_EMOTES: 1 << 0,
   BTTV_GIF_EMOTES: 1 << 1,
   FFZ_EMOTES: 1 << 2,
+  STV_EMOTES: 1 << 3,
 };
 
 export const ChatFlags = {
@@ -122,6 +123,7 @@ export const NavigationModeTypes = {
 export const EmoteProviders = {
   BETTERTTV: 'bttv',
   FRANKERFACEZ: 'ffz',
+  SEVENTV: '7tv',
   TWITCH: 'twitch',
   YOUTUBE: 'youtube',
 };
@@ -133,6 +135,8 @@ export const EmoteCategories = {
   BETTERTTV_EMOJI: 'bttv-emoji',
   FRANKERFACEZ_GLOBAL: 'ffz-global',
   FRANKERFACEZ_CHANNEL: 'ffz-channel',
+  SEVENTV_GLOBAL: '7tv-global',
+  SEVENTV_CHANNEL: '7tv-channel',
   EMOJI_PEOPLE: 'emoji-people',
   EMOJI_NATURE: 'emoji-nature',
   EMOJI_FOODS: 'emoji-foods',
@@ -200,7 +204,10 @@ export const SettingDefaultValues = {
   [SettingIds.BLACKLIST_KEYWORDS]: {},
   [SettingIds.HIGHLIGHT_KEYWORDS]: null,
   [SettingIds.SIDEBAR]: [SidebarFlags.OFFLINE_FOLLOWED_CHANNELS | SidebarFlags.FEATURED_CHANNELS, 0],
-  [SettingIds.EMOTES]: [EmoteTypeFlags.BTTV_EMOTES | EmoteTypeFlags.BTTV_GIF_EMOTES | EmoteTypeFlags.FFZ_EMOTES, 0],
+  [SettingIds.EMOTES]: [
+    EmoteTypeFlags.BTTV_EMOTES | EmoteTypeFlags.BTTV_GIF_EMOTES | EmoteTypeFlags.FFZ_EMOTES | EmoteTypeFlags.STV_EMOTES,
+    0,
+  ],
   [SettingIds.CHAT]: [
     ChatFlags.BITS |
       ChatFlags.CHAT_CLIPS |

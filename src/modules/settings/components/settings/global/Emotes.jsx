@@ -39,6 +39,12 @@ function EmotesModule() {
               {formatMessage({defaultMessage: 'Enables emotes from that other extension people sometimes use'})}
             </p>
           </Checkbox>
+          <Checkbox key="stvEmotes" value={EmoteTypeFlags.STV_EMOTES}>
+            <p className={styles.heading}>{formatMessage({defaultMessage: '7TV Emotes'})}</p>
+            <p className={styles.settingDescription}>
+              {formatMessage({defaultMessage: 'Enables emotes from that other extension people sometimes use'})}
+            </p>
+          </Checkbox>
         </CheckboxGroup>
       </div>
     </Panel>

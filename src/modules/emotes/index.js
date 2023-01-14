@@ -4,6 +4,8 @@ import personalEmotes from './personal-emotes.js';
 import emojis from './emojis.js';
 import frankerfacezGlobalEmotes from '../frankerfacez/global-emotes.js';
 import frankerfacezChannelEmotes from '../frankerfacez/channel-emotes.js';
+import sevenTVGlobalEmotes from '../seventv/global-emotes.js';
+import sevenTVChannelEmotes from '../seventv/channel-emotes.js';
 import settings from '../../settings.js';
 import {EmoteProviders, EmoteTypeFlags, SettingIds} from '../../constants.js';
 import {hasFlag} from '../../utils/flags.js';
@@ -18,6 +20,8 @@ class EmotesModule {
       globalEmotes,
       frankerfacezGlobalEmotes,
       frankerfacezChannelEmotes,
+      sevenTVGlobalEmotes,
+      sevenTVChannelEmotes,
       emojis,
     ];
   }
@@ -25,13 +29,15 @@ class EmotesModule {
   getEmotes(categoryFilter = []) {
     let emotes = [];
     const emotesSettingValue = settings.get(SettingIds.EMOTES);
-
     for (const category of this.emoteCategories) {
       if (categoryFilter.includes(category.category.id)) {
         continue;
       }
       const categoryProvider = category.category.provider;
       if (categoryProvider === EmoteProviders.BETTERTTV && !hasFlag(emotesSettingValue, EmoteTypeFlags.BTTV_EMOTES)) {
+        continue;
+      }
+      if (categoryProvider === EmoteProviders.SEVENTV && !hasFlag(emotesSettingValue, EmoteTypeFlags.STV_EMOTES)) {
         continue;
       }
       if (categoryProvider === EmoteProviders.FRANKERFACEZ && !hasFlag(emotesSettingValue, EmoteTypeFlags.FFZ_EMOTES)) {
@@ -55,6 +61,7 @@ class EmotesModule {
   }
 
   getEmotesByCategories(categoryFilter = []) {
+    console.log(categoryFilter);
     return this.getEmotes(
       this.emoteCategories.map(({category: {id}}) => id).filter((categoryId) => !categoryFilter.includes(categoryId))
     );
@@ -68,6 +75,9 @@ class EmotesModule {
       const category = this.emoteCategories[i];
       const categoryProvider = category.category.provider;
       if (categoryProvider === EmoteProviders.BETTERTTV && !hasFlag(emotesSettingValue, EmoteTypeFlags.BTTV_EMOTES)) {
+        continue;
+      }
+      if (categoryProvider === EmoteProviders.SEVENTV && !hasFlag(emotesSettingValue, EmoteTypeFlags.STV_EMOTES)) {
         continue;
       }
       if (categoryProvider === EmoteProviders.FRANKERFACEZ && !hasFlag(emotesSettingValue, EmoteTypeFlags.FFZ_EMOTES)) {

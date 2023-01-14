@@ -199,7 +199,7 @@ class EmoteMenuViewStore extends SafeEventEmitter {
         EmoteCategories.SEVENTV_CHANNEL,
         EmoteProviders.SEVENTV,
         formatMessage({defaultMessage: '7TV Channel'}),
-        Icons.IMAGE(cdn.url('/assets/logos/7tv_logo.webp'), '7TV', currentChannelProfilePicture),
+        Icons.IMAGE('https://avatars.githubusercontent.com/u/79559531', '7TV', currentChannelProfilePicture),
         emotes.getEmotesByCategories([EmoteCategories.SEVENTV_CHANNEL]),
         sevenTVChannelEmotes
       ),
@@ -207,7 +207,7 @@ class EmoteMenuViewStore extends SafeEventEmitter {
         EmoteCategories.SEVENTV_GLOBAL,
         EmoteProviders.SEVENTV,
         formatMessage({defaultMessage: '7TV Global'}),
-        Icons.IMAGE(cdn.url('/assets/logos/7tv_logo.webp'), '7TV'),
+        Icons.IMAGE('https://avatars.githubusercontent.com/u/79559531', '7TV'),
         emotes.getEmotesByCategories([EmoteCategories.SEVENTV_GLOBAL])
       ),
     ];
